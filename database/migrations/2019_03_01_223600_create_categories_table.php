@@ -15,7 +15,9 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('name')->index()->comment('名稱');
+            $table->text('description')->nullable()->comment('描述');
+            $table->integer('post_count')->default(0)->comment('帖子數');
         });
     }
 
